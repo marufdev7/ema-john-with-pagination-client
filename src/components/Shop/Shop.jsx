@@ -8,9 +8,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [itemsPerPage, setItemPerPage] = useState(10);
     const {count} = useLoaderData();
-    // console.log({count});
-    const itemsPerPage = 10;
     const numberOfPages = Math.ceil(count / itemsPerPage);
 
     // const pages = [];
@@ -99,7 +98,11 @@ const Shop = () => {
                     </Link>
                 </Cart>
             </div>
-            
+            <div className='pagination'>
+                {
+                    pages.map(page => <button key={page}>{page}</button>)
+                }
+            </div>
         </div>
     );
 };
